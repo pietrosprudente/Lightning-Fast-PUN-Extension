@@ -1,11 +1,10 @@
 using Photon.Pun;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class LightningFastVariablesView : MonoBehaviourPunCallbacks, IPunObservable
-{
-    public object[] localStoredVariables = { 
+public class LightningFastVariablesView : MonoBehaviourPunCallbacks, IPunObservable {
+    private object[] localStoredVariables = {
         0,
         1,
         2,
@@ -25,6 +24,8 @@ public class LightningFastVariablesView : MonoBehaviourPunCallbacks, IPunObserva
         16,
     };
 
+    private List<object> localStoredVariablesList;
+
     /// <summary>
     /// Can only Save from 0 to 16 variables
     /// </summary>
@@ -32,7 +33,14 @@ public class LightningFastVariablesView : MonoBehaviourPunCallbacks, IPunObserva
     /// <param name="value"> the value the index is stored in</param>
     public void SetCloudVariable(int index, object value) {
         localStoredVariables.SetValue(value, index);
-        if(PhotonNetwork.PhotonServerSettings.PunLogging >= (PunLogLevel)1)
+        localStoredVariablesList = localStoredVariables.ToList();
+        for (int i = 0; i < localStoredVariables.Length; i++) {
+            if (localStoredVariables[i] == null) {
+                localStoredVariablesList.Remove(i);
+                localStoredVariables = localStoredVariablesList.ToArray();
+            }
+        }
+        if (PhotonNetwork.PhotonServerSettings.PunLogging >= (PunLogLevel)1)
             Debug.Log(transform.name + localStoredVariables.ToString());
     }
 
@@ -57,6 +65,11 @@ public class LightningFastVariablesView : MonoBehaviourPunCallbacks, IPunObserva
         else {
             for (int i = 0; i < localStoredVariables.Length; i++) {
                 localStoredVariables.SetValue((object)stream.ReceiveNext(), i);
+                localStoredVariablesList = localStoredVariables.ToList();
+                if (localStoredVariables[i] == null) {
+                    localStoredVariablesList.Remove(i);
+                    localStoredVariables = localStoredVariablesList.ToArray();
+                }
             }
         }
     }
