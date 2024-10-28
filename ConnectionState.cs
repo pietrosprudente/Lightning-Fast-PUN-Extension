@@ -68,9 +68,6 @@ public class ConnectionState : MonoBehaviourPunCallbacks
     }
 
     private void ChangeConnectionTexts(Color newColor) {
-        if (PhotonNetwork.OfflineMode) {
-            connectionState = "Offline";
-        }
         if (connectionTexts == null)
             return;
         foreach (var text in connectionTexts) {
