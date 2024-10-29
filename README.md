@@ -21,11 +21,11 @@ What it can do currently (Server Events (better than PunRPC), Variable View (bet
 >> 
 >>> Setting up the Cloud Variable, allocate the index and insert the value!
 >>> 
->>>```lightningFastVariablesView.CloudVariable(0, speed);```
+>>>```variablesView.CloudVariable(0, speed);```
 >>> 
 >>> Getting the Cloud Variable, insert the cast + index and returns the value!
 >>> 
->>>```speed = (float)lightningFastVariablesView.CloudVariable(0);```
+>>>```speed = (float)variablesView.CloudVariable(0);```
 
 **End of Code Examples!**
 
