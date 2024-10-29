@@ -1,5 +1,5 @@
 Easy way of using Photon PUN
-What it can do currently (Server Events (better than PunRPC), Variable View (better than PhotonSerializeView))
+What it can do currently (Server Events (better than PunRPC), Variable View (way better than PhotonSerializeView))
 
 **Code Examples!**
 > *Server Events*
