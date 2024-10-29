@@ -59,11 +59,11 @@ public class ConnectionState : MonoBehaviourPunCallbacks
 
     private void Start() {
         if (PhotonNetwork.IsConnected) {
-            connectionState = "Online";
+            connectionState = "Connected";
         }
         else
         {
-            connectionState = "Offline";
+            connectionState = "Not Connected";
         }
     }
 
