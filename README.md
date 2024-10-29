@@ -1,7 +1,7 @@
 Easy way of using Photon PUN
 What it can do currently (Server Events (better than PunRPC), Variable View (better than PhotonSerializeView))
 
-**Code Examples:**
+**Code Examples!**
 > *Server Events*
 >> ```[ServerEvent]```
 >> 
@@ -16,7 +16,7 @@ What it can do currently (Server Events (better than PunRPC), Variable View (bet
 >> Can Save and Load from 0 to 16 variables
 >>> ```CloudVariable(int index, [object value = null]);```
 >>> 
->> How ```CloudVariable();``` would be used:
+>> **How ```CloudVariable();``` would be used!**
 >> 
 >>> Setting up the Cloud Variable, allocate the index and insert the value!
 >>>```lightningFastVariablesView.CloudVariable(0, speed);```
@@ -24,7 +24,7 @@ What it can do currently (Server Events (better than PunRPC), Variable View (bet
 >>> Getting the Cloud Variable, insert the cast + index and returns the value!
 >>>```speed = (float)lightningFastVariablesView.CloudVariable(0);```
 
-**End of Code Examples**
+**End of Code Examples!**
 
 Want to get your game listed, just drop an issue and I will manage it :D
 
