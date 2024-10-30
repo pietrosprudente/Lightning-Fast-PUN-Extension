@@ -1,11 +1,13 @@
 using Photon.Pun;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class LightningFastVariablesView : MonoBehaviour, IPunObservable {
 
-    private PhotonView photonView;
+    [NonSerialized]
+    public PhotonView photonView;
 
     private object[] localStoredVariables = {
         0,
@@ -29,7 +31,7 @@ public class LightningFastVariablesView : MonoBehaviour, IPunObservable {
 
     private List<object> localStoredVariablesList;
 
-    void Start() { 
+    void Start() {
         photonView = GetComponent<PhotonView>();
     }
 
@@ -39,7 +41,8 @@ public class LightningFastVariablesView : MonoBehaviour, IPunObservable {
     /// <param name="index"> the index stored that the value is stored</param>
     /// <param name="value"> the value the index is stored in</param>
     public void SetCloudVariable(int index, object value) {
-        if(value == localStoredVariables.GetValue(index)) return;
+        if (value == localStoredVariables.GetValue(index))
+            return;
         localStoredVariables.SetValue(value, index);
         localStoredVariablesList = localStoredVariables.ToList();
         for (int i = 0; i < localStoredVariables.Length; i++) {
@@ -63,7 +66,7 @@ public class LightningFastVariablesView : MonoBehaviour, IPunObservable {
             if (localStoredVariables.GetValue(index) == null)
                 return null;
             return localStoredVariables.GetValue(index);
-        }        
+        }
     }
 
     /// <summary>
@@ -78,9 +81,9 @@ public class LightningFastVariablesView : MonoBehaviour, IPunObservable {
             }
             return localStoredVariables.GetValue(index);
         }
-        else if (GetCloudVariable(index) != null){
+        else if (GetCloudVariable(index) != null) {
             return GetCloudVariable(index);
-        }      
+        }
         return null;
     }
 
